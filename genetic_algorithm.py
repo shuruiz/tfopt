@@ -11,13 +11,15 @@ import numpy as np
 import random 
 from network import Network 
 
+def GeneticAlgorithmTrainner(weights, bias, problem)
+
 class GeneticAlgorithmOptimizer():
 
-	def __init__(self, target, mutation_rate = 0.2, random_select = 0.1, retain = 0.4, name = 'GA'):
+	def __init__(self, num_input, mutation_rate = 0.2, random_select = 0.1, retain = 0.4, name = 'GA'):
 		self._mutation_rate = mutation_rate
 		self._random_select = random_select
 		self._retain = retain 
-		self._list_of_target = targets
+		# self._list_of_target = targets
 
 
 	def _create_population(self, size):
@@ -39,6 +41,7 @@ class GeneticAlgorithmOptimizer():
 	def fitness(nn, problem='k-peak'):
 		"""
 		return the sore of current network
+		use cross entropy to calculate loss
 		"""
 		if problem == 'k-peak':
 			error = 

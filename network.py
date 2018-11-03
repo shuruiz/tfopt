@@ -54,12 +54,14 @@ class Network():
 				Weights = np.array(Weights)
 				self._weights[l] = Weights
 
-	def train(data, problem, algo='genetic'):
+	def train(data, problem, episodes = 100000, algo='genetic'):
 		"""
 
 		"""
+
 		if algo == genetic:
-			self._weights, self._bias, fitness = GeneticAlgorithmTrainner()
+			for epi in range(episodes):
+				self._weights, self._bias, fitness = GeneticAlgorithmTrainner(self._weights, self.bias, problem)
 
 		elif algo =='RHC':
 			pass 
