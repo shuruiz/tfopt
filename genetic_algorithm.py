@@ -41,23 +41,29 @@ class GeneticAlgorithmOptimizer():
 		return the sore of current network
 		"""
 		if problem == 'k-peak':
-			fitness = 
+			error = 
 
 		elif problem =='k-color':
-			fitness = 
+			error = error 
+
 
 		else:
 			print("you problem should be 'k-peak' or 'k-color' ")
 			return None 
+
+		fitness = 1/ error 
 		return fitness
 
-	def encode(self,nn): # weights + bias
+	def encode(self,nn):  # weights 
+		# algorithm ref: 
+		# Montana, D. J., & Davis, L. (1989, August). \
+		# Training Feedforward Neural Networks Using Genetic Algorithms. \
+		# In IJCAI (Vol. 89, pp. 762-767).
 		_weights = nn.getWeights()
 		gene  = [x for x in _weights]
 		return gene 
 
-
-	def breed(self, mother, father ):
+	def breed(self, mother, father):
 		children=[]
 
 		for i in range(2):
