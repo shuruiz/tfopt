@@ -4,7 +4,7 @@ import random
 """
 class to create network
 """
-from genetic_algorithm import GeneticAlgorithmTrainner
+# from genetic_algorithm import GeneticAlgorithmTrainner
 
 
 
@@ -33,8 +33,6 @@ class Network():
 			self._nnodes.append(n_nodes)
 		random_initialize()
 
-	def delete_layer(index):
-		pass
 
 	def random_initialize(self):
 		for l in range(self._nlayer):
@@ -69,15 +67,11 @@ class Network():
 			pass 
 
 
-
-
 	def getWeights():
 		return self._weights
 
 	def getBias():
 		return self._bias
-
-	def loss
 
 
 
