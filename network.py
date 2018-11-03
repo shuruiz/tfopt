@@ -70,7 +70,7 @@ class Network():
 	def getWeights():
 		return self._weights
 	def getBias():
-	return self._bias
+		return self._bias
 
 	def setWeights(W):
 		for l in range(self._nlayer):
