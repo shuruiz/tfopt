@@ -14,12 +14,14 @@ class Network():
 		"""
 		input layer is not considered as a layer
 		"""
-		self._nlayer=0
-		self._nnodes=[]
-		self._num_input = num_input
+		# self.structure=nn_structure
+		self._nlayer=len(nn_structure)-1
+		print("layers",self._nlayer)
+		self._nnodes=nn_structure[1:]
+		self._num_input = nn_structure[0]
 		self._weights={} #{layer: Weights}
 		self._bias={}
-		random_initialize(nn_structure)
+		self.random_initialize()
 
 	def add_layer(self,n_nodes):
 		"""
@@ -32,12 +34,12 @@ class Network():
 		# self._bias  = np.random.randn(1, self._nlayer) # initialize bias
 		for ele in n_nodes:
 			self._nnodes.append(n_nodes)
-		random_initialize()
+		self.random_initialize()
 
 
 	def random_initialize(self):
 		for l in range(self._nlayer):
-			self._bias[l]  = np.random.randn()
+			self._bias[l]  = np.array([np.random.randn()])
 			Weights = []
 			if l ==0: # first layer
 				for n in range(self._nnodes[l]):
@@ -53,7 +55,7 @@ class Network():
 				Weights = np.array(Weights)
 				self._weights[l] = Weights
 
-			print("random initialize weights")
+		print("random initialize weights")
 
 	# def train(self, data, problem, episodes = 100000, algo='genetic'):
 	# 	"""
