@@ -69,9 +69,18 @@ class Network():
 
 	def getWeights():
 		return self._weights
-
 	def getBias():
-		return self._bias
+	return self._bias
+
+	def setWeights(W):
+		for l in range(self._nlayer):
+			self._weights[l] = W[l]
+
+	def setBias(B):
+		for l in range(self._nlayer):
+			self._bias[l] = B[l]
+
+
 
 
 
