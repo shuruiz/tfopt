@@ -10,7 +10,7 @@ class to create network
 
 class Network():
 	"""create a fully-connected network"""
-	def __init__(num_input):
+	def __init__(self, nn_structure):
 		"""
 		input layer is not considered as a layer
 		"""
@@ -19,8 +19,9 @@ class Network():
 		self._num_input = num_input
 		self._weights={} #{layer: Weights}
 		self._bias={}
+		random_initialize(nn_structure)
 
-	def add_layer(n_nodes):
+	def add_layer(self,n_nodes):
 		"""
 		add layers to the network
 		n_nodes: [n_node1, n_nodes_2]
@@ -52,31 +53,34 @@ class Network():
 				Weights = np.array(Weights)
 				self._weights[l] = Weights
 
-	def train(data, problem, episodes = 100000, algo='genetic'):
-		"""
+			print("random initialize weights")
 
-		"""
+	# def train(self, data, problem, episodes = 100000, algo='genetic'):
+	# 	"""
 
-		if algo == genetic:
-			for epi in range(episodes):
-				self._weights, self._bias, fitness = GeneticAlgorithmTrainner(self._weights, self.bias, problem)
+	# 	"""
 
-		elif algo =='RHC':
-			pass 
-		elif algo =='SIMann':
-			pass 
+	# 	if algo == genetic:
+	# 		for epi in range(episodes):
+	# 			self._weights, self._bias, fitness = GeneticAlgorithmTrainner(self._weights, self.bias, problem)
+
+	# 	elif algo =='RHC':
+	# 		pass 
+	# 	elif algo =='SIMann':
+	# 		pass 
 
 
-	def getWeights():
+	def getWeights(self):
 		return self._weights
-	def getBias():
+
+	def getBias(self):
 		return self._bias
 
-	def setWeights(W):
+	def setWeights(self,W):
 		for l in range(self._nlayer):
 			self._weights[l] = W[l]
 
-	def setBias(B):
+	def setBias(self, B):
 		for l in range(self._nlayer):
 			self._bias[l] = B[l]
 
