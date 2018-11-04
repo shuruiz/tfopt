@@ -18,7 +18,10 @@ class Network():
 		self._nlayer=len(nn_structure)-1
 		print("layers",self._nlayer)
 		self._nnodes=nn_structure[1:]
-		self._num_input = nn_structure[0]
+		self._num_input = nn_structure[0][0]
+		self._input_dim = nn_structure[0][1]
+
+		print("_num_input:", self._num_input)
 		self._weights={} #{layer: Weights}
 		self._bias={}
 		self.random_initialize()
@@ -39,20 +42,23 @@ class Network():
 
 	def random_initialize(self):
 		for l in range(self._nlayer):
-			self._bias[l]  = np.array([np.random.randn()])
+			
 			Weights = []
+
 			if l ==0: # first layer
 				for n in range(self._nnodes[l]):
-					w = np.random.randn(1,self._num_input)
-					Weights.append(w[0])
-				Weights = np.array(Weights)
+					Weights = np.random.randn(self._input_dim, self._nnodes[l])
+					self._bias[l]  = np.random.randn(self._num_input,self._nnodes[l])
+					# Weights.append(w)
+				# Weights = np.array(Weights)
 				self._weights[l] = Weights
 
 			else:
 				for n in range(self._nnodes[l]):
-					w = np.random.randn(1, self._nnodes[l-1])
-					Weights.append(w[0])
-				Weights = np.array(Weights)
+					Weights= np.random.randn(self._nnodes[l-1], self._nnodes[l])
+					self._bias[l]  = np.random.randn(self._num_input,self._nnodes[l])
+					# Weights.append(w[0])
+				# Weights = np.array(Weights)
 				self._weights[l] = Weights
 
 		print("random initialize weights")
