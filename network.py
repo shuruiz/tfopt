@@ -16,12 +16,12 @@ class Network():
 		"""
 		# self.structure=nn_structure
 		self._nlayer=len(nn_structure)-1
-		print("layers",self._nlayer)
+		# print("layers",self._nlayer)
 		self._nnodes=nn_structure[1:]
 		self._num_input = nn_structure[0][0]
 		self._input_dim = nn_structure[0][1]
 
-		print("_num_input:", self._num_input)
+		# print("_num_input:", self._num_input)
 		self._weights={} #{layer: Weights}
 		self._bias={}
 		self.random_initialize()
@@ -61,7 +61,7 @@ class Network():
 				# Weights = np.array(Weights)
 				self._weights[l] = Weights
 
-		print("random initialize weights")
+		# print("random initialize weights")
 
 	# def train(self, data, problem, episodes = 100000, algo='genetic'):
 	# 	"""
