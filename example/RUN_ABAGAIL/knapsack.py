@@ -102,27 +102,27 @@ pop = GenericProbabilisticOptimizationProblem(ef, odd, df)
 #=======================
 # Random Hiil Climbing
 #=======================
-print "Starting Random Hill Climbing Seacrh..."
-rhc = RandomizedHillClimbing(hcp)
-rhc_iters = []
-rhc_fitness = []
-rhc_time = []
-for i in maxiters_rhc:
-    fit = FixedIterationTrainer(rhc, i)
-    t1=time.time()
-    error=fit.train()
-    t2=time.time()
-    fitness = ef.value(rhc.getOptimal())
-    time_ms=round(1000*(t2-t1),2)
-    rhc_fitness.append(fitness)
-    rhc_time.append(time_ms)
-    rhc_iters.append(i)
-    #print "RHC: " + str(fitness)
-    print "RHC fitness using "+ str(i)+" fixed iterations: " + str(fitness)
-    print "Time taken for RHC using fixed iterations: "+str(time_ms)+" milliseconds"
+# print "Starting Random Hill Climbing Seacrh..."
+# rhc = RandomizedHillClimbing(hcp)
+# rhc_iters = []
+# rhc_fitness = []
+# rhc_time = []
+# for i in maxiters_rhc:
+#     fit = FixedIterationTrainer(rhc, i)
+#     t1=time.time()
+#     error=fit.train()
+#     t2=time.time()
+#     fitness = ef.value(rhc.getOptimal())
+#     time_ms=round(1000*(t2-t1),2)
+#     rhc_fitness.append(fitness)
+#     rhc_time.append(time_ms)
+#     rhc_iters.append(i)
+#     #print "RHC: " + str(fitness)
+#     print "RHC fitness using "+ str(i)+" fixed iterations: " + str(fitness)
+#     print "Time taken for RHC using fixed iterations: "+str(time_ms)+" milliseconds"
 
-print "Finished Random Hill Climbing Seacrh."
-print "="*100
+# print "Finished Random Hill Climbing Seacrh."
+# print "="*100
 
 
 
@@ -156,27 +156,27 @@ print "="*100
 #=======================
 # Genetic Algorithm
 #=======================
-# print "Starting Genetic Algorithm Seacrh..."
-# ga = StandardGeneticAlgorithm(GA_popsize, GA_toMate, GA_toMutate, gap)
-# ga_iters = []
-# ga_fitness = []
-# ga_time = []
+print "Starting Genetic Algorithm Seacrh..."
+ga = StandardGeneticAlgorithm(GA_popsize, GA_toMate, GA_toMutate, gap)
+ga_iters = []
+ga_fitness = []
+ga_time = []
 
-# for i in maxiters_ga:
-#     fit = FixedIterationTrainer(ga, i)
-#     t1=time.time()
-#     fit.train()
-#     t2=time.time()
-#     fitness = ef.value(ga.getOptimal())
-#     time_ms=round(1000*(t2-t1),2)
-#     ga_fitness.append(fitness)
-#     ga_time.append(time_ms)
-#     ga_iters.append(i)
-#     print "GA fitness using "+ str(i)+" fixed iterations: " + str(fitness)
-#     print "Time taken for GA using fixed iterations: "+str(time_ms)+" milliseconds"
+for i in maxiters_ga:
+    fit = FixedIterationTrainer(ga, i)
+    t1=time.time()
+    fit.train()
+    t2=time.time()
+    fitness = ef.value(ga.getOptimal())
+    time_ms=round(1000*(t2-t1),2)
+    ga_fitness.append(fitness)
+    ga_time.append(time_ms)
+    ga_iters.append(i)
+    print "GA fitness using "+ str(i)+" fixed iterations: " + str(fitness)
+    print "Time taken for GA using fixed iterations: "+str(time_ms)+" milliseconds"
 
-# print "Finished Genetic Algorithm Seacrh."
-# print "="*100
+print "Finished Genetic Algorithm Seacrh."
+print "="*100
 
 
 #"""
@@ -208,10 +208,10 @@ print "="*100
 
 
 # Writing RHC performance to a CSV
-spamWriter = csv.writer(open('knapsack_rhc.csv', 'w'), delimiter=' ',quotechar='|')
-spamWriter.writerow(rhc_iters)
-spamWriter.writerow(rhc_fitness)
-spamWriter.writerow(rhc_time)
+# spamWriter = csv.writer(open('knapsack_rhc.csv', 'w'), delimiter=' ',quotechar='|')
+# spamWriter.writerow(rhc_iters)
+# spamWriter.writerow(rhc_fitness)
+# spamWriter.writerow(rhc_time)
 
 # Writing SA performance to a CSV
 # spamWriter = csv.writer(open('knapsack_sa.csv', 'w'), delimiter=' ',quotechar='|')
@@ -220,10 +220,10 @@ spamWriter.writerow(rhc_time)
 # spamWriter.writerow(sa_time)
 
 # Writing GA performance to a CSV
-# spamWriter = csv.writer(open('knapsack_ga.csv', 'w'), delimiter=' ',quotechar='|')
-# spamWriter.writerow(ga_iters)
-# spamWriter.writerow(ga_fitness)
-# spamWriter.writerow(ga_time)
+spamWriter = csv.writer(open('knapsack_ga.csv', 'w'), delimiter=' ',quotechar='|')
+spamWriter.writerow(ga_iters)
+spamWriter.writerow(ga_fitness)
+spamWriter.writerow(ga_time)
 
 # Writing MIMIC performance to a CSV
 # spamWriter = csv.writer(open('knapsack_mimic.csv', 'w'), delimiter=' ',quotechar='|')
